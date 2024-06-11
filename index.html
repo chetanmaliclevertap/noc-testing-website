@@ -3,9 +3,12 @@
     <head>
         <link rel="manifest" href="/web-sdk-test/manifest.json">
         <script type="text/javascript">
-		var clevertap = { event: [], profile: [], account: [], region: 'sk1-staging-4'};
+		const queryParams = new URLSearchParams(window.location.search)
+		const accountId = queryParams.get('accountId')
+		const region = queryParams.get('region')
+		var clevertap = { event: [], profile: [], account: [], region };
 	//	var clevertap = { event: [], profile: [], account: [], region: 'wus2', targetDomain: 'clevertap-prod-az.com' };
- 		             clevertap.account.push({ id: "884-5ZW-8Z7Z" }); // Web Squad  
+ 		             clevertap.account.push({ id: accountId }); // Web Squad  
 	//	             clevertap.account.push({ id: "WR5-Z98-W56Z" }); // Web Testing       
 	//	              clevertap.account.push({ id: "W48-KW4-656Z" }); // WCC Team returns   
 //             clevertap.account.push({ id: "RK4-898-W85Z" }); // WA rollout qa
