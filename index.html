@@ -357,6 +357,10 @@ function renderCartDropOffPersonalisationCampaign (data) {
                 var customerType = clevertap.profile.getAttribute("Customer type");
                 console.log(customerType);
             }
+
+		setTimeout(() => {
+  clevertap.notifications.enable({'swPath': '/sw.js'})
+}, 1000)
   </script>
               
         <link rel="stylesheet" href="/web-sdk-test/style.css" />
