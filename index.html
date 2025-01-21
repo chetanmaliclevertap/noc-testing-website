@@ -126,7 +126,7 @@
 		//    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2521/popup_imageonly/clevertap.js';
 	// wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2041/web_inbox/clevertap.js'
 	//	    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@WEB-3338/clevertap.js';
-		    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@5d4c47a10713124bcd366d6aa26481e7c09c4445/clevertap.js';
+		    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@080368b7b76498db22ce77aeefc9ab366c03a0a4/clevertap.js';
 		    // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@master/clevertap.js';
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(wzrk, s);
@@ -359,9 +359,7 @@ function renderCartDropOffPersonalisationCampaign (data) {
                 console.log(customerType);
             }
 
-		setTimeout(() => {
-  clevertap.notifications.enable({'swPath': '/web-sdk-test/js/clevertap_sw.js'})
-}, 1000)
+	clevertap.notifications.push({})
   </script>
               
         <link rel="stylesheet" href="/web-sdk-test/style.css" />
