@@ -358,8 +358,9 @@ function renderCartDropOffPersonalisationCampaign (data) {
                 var customerType = clevertap.profile.getAttribute("Customer type");
                 console.log(customerType);
             }
+console.log('clevertap.notifications', clevertap.notifications);
 
-			clevertap.notifications.push({
+		clevertap.notifications.push({
 		    "titleText": 'Wish to receive push notifications?',
 		    "bodyText": 'Click Yes to receive push notifications',
 		    "okButtonText": 'Yes',
