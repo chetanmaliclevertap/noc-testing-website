@@ -147,7 +147,13 @@
     </head>
     <body>
         <script type="text/javascript">
-            
+
+		document.addEventListener('CT_web_native_display_json', (event) => {
+  const eventData = event.detail;
+  console.log('Custom Event Data:', eventData);
+console.log('Chetan event listener added for Json');
+});
+		
             document.addEventListener("CT_web_personalization", function(event) {
     const data = event.detail;
 	const topic = data.kv.topic;
