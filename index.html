@@ -131,28 +131,41 @@
 
 		    wzrk.onload = () => {
 			   console.log('loaded'); 
-			    console.log('clevertap.notifications', clevertap.notifications)
-			    		clevertap.notifications.push({
-		    "titleText": 'Wish to receive push notifications?',
-		    "bodyText": 'Click Yes to receive push notifications',
-		    "okButtonText": 'Yes',
-		    "rejectButtonText": 'No',
-		"serviceWorkerPath": '/web-sdk-test/js/clevertap_sw.js'});
+			    clevertap.notifications.push({
+          apnsWebPushId: "web.com.localhost.pushDemo", //only for safari browser
+          apnsWebPushServiceUrl:
+            "https://us-central1-chetan-s-demo-app.cloudfunctions.net/api", //only for safari browser
+          titleText: "Chetan Would you like to receive Push Notifications?",
+          bodyText:
+            "We promise to only send you relevant content and give you updates on your transactions",
+          okButtonText: "Sign me up!",
+          rejectButtonText: "No thanks",
+          okButtonColor: "#f28046",
+          hidePoweredByCT: true,
+          serviceWorkerPath: '/web-sdk-test/js/clevertap_sw.js',
+        });
+		// 	    console.log('clevertap.notifications', clevertap.notifications)
+		// 	    		clevertap.notifications.push({
+		//     "titleText": 'Wish to receive push notifications?',
+		//     "bodyText": 'Click Yes to receive push notifications',
+		//     "okButtonText": 'Yes',
+		//     "rejectButtonText": 'No',
+		// "serviceWorkerPath": '/web-sdk-test/js/clevertap_sw.js'});
 		    }
-	// 		    clevertap.notifications.push({
- //          apnsWebPushId: "web.com.localhost.pushDemo", //only for safari browser
- //          apnsWebPushServiceUrl:
- //            "https://us-central1-chetan-s-demo-app.cloudfunctions.net/api", //only for safari browser
- //          titleText: "Chetan Would you like to receive Push Notifications?",
- //          bodyText:
- //            "We promise to only send you relevant content and give you updates on your transactions",
- //          okButtonText: "Sign me up!",
- //          rejectButtonText: "No thanks",
- //          okButtonColor: "#f28046",
- //          hidePoweredByCT: true,
- //          serviceWorkerPath: '/web-sdk-test/js/clevertap_sw.js',
- //        });
-	// }
+			    clevertap.notifications.push({
+          apnsWebPushId: "web.com.localhost.pushDemo", //only for safari browser
+          apnsWebPushServiceUrl:
+            "https://us-central1-chetan-s-demo-app.cloudfunctions.net/api", //only for safari browser
+          titleText: "Chetan Would you like to receive Push Notifications?",
+          bodyText:
+            "We promise to only send you relevant content and give you updates on your transactions",
+          okButtonText: "Sign me up!",
+          rejectButtonText: "No thanks",
+          okButtonColor: "#f28046",
+          hidePoweredByCT: true,
+          serviceWorkerPath: '/web-sdk-test/js/clevertap_sw.js',
+        });
+	}
 		    // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@master/clevertap.js';
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(wzrk, s);
