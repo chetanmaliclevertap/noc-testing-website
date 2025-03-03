@@ -157,6 +157,25 @@
                 var s = document.getElementsByTagName("script")[0];
                 s.parentNode.insertBefore(wzrk, s);
             })();
+
+		(function () {
+    const originalDispatch = EventTarget.prototype.dispatchEvent;
+
+    EventTarget.prototype.dispatchEvent = function (event) {
+        if (!(event instanceof Event)) return originalDispatch.call(this, event);
+
+        // Check if it's a CustomEvent
+        if (event instanceof CustomEvent) {
+            console.log("Custom Event Detected:", {
+                type: event.type,
+                detail: event.detail,
+                target: event.target
+            });
+        }
+
+        return originalDispatch.call(this, event);
+    };
+})();
         </script>
     </head>
     <body>
