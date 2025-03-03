@@ -187,11 +187,14 @@
 console.log('Chetan event listener added for Json');
 });
 		
-            document.addEventListener("CT_web_personalization", function(event) {
+            document.addEventListener("CT_web_native_display", function(event) {
     const data = event.detail;
 	const topic = data.kv.topic;
 	switch (topic) {
 	    case "Cart drop-off": {
+			renderCartDropOffPersonalisationCampaign(data)
+			break;
+		case "MAK1": {
 			renderCartDropOffPersonalisationCampaign(data)
 			break;
         }
