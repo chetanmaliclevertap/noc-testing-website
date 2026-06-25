@@ -117,7 +117,8 @@
       //    wzrk.src = "a.js";
       //wzrk.src = "web_personalization_new_sdk";
     // 	wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';  
-        wzrk.src = 'https://static.clevertap.com/staging/WEB-3523-2/js/clevertap.js';
+     //   wzrk.src = 'https://static.clevertap.com/staging/WEB-3523-2/js/clevertap.js';
+     wzrk.src = 'https://static.clevertap.com/staging/task/ONC-551/multi_instance/js/clevertap.min.js'
       //	    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@prompt_bugfix/clevertap.js';
       // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@web-2622-message-pivot-id/clevertap.min.js';
       //	     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/visual-editor-security/clevertap.min.js';
@@ -228,6 +229,20 @@
      */
   }
 
+  clevertap.init("884-5ZW-8Z7Z", "sk1-staging-18", "wzrkt.com"); //mobile_channels
+
+clevertap.privacy.push({ useIP: true });
+clevertap.privacy.push({ optOut: false });
+clevertap.setLogLevel(4);
+clevertap.event.push('Added To Cart');
+
+const ct2 = clevertap.CleverTap.createInstance({
+  accountId: '468-RZW-ZK6Z',
+})
+ct2.init()
+ct2.privacy.push({ useIP: true })
+ct2.setLogLevel(3)
+ct2.event.push('MAK123');
 
   function pushprofile() {
     var id = makeid(5);
