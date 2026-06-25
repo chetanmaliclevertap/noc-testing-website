@@ -96,71 +96,31 @@
     })(personalizedSelectors, delay);
   </script>
 
-  <script type="text/javascript">
-    const queryParams = new URLSearchParams(window.location.search)
-    const accountId = queryParams.get('accountId')
-    const region = queryParams.get('region')
-    var clevertap = { event: [], profile: [], account: [], region };
-    //	var clevertap = { event: [], profile: [], account: [], region: 'wus2', targetDomain: 'clevertap-prod-az.com' };
-    clevertap.account.push({ id: accountId }); // Web Squad  
-    //	             clevertap.account.push({ id: "WR5-Z98-W56Z" }); // Web Testing       
-    //	              clevertap.account.push({ id: "W48-KW4-656Z" }); // WCC Team returns   
-    //             clevertap.account.push({ id: "RK4-898-W85Z" }); // WA rollout qa
-    //clevertap.account.push({ id: "WRK-485-456Z" }); // Web Testing RK8-84W-K66Z
-    //		clevertap.account.push({ id: "RK8-84W-K66Z" }); // NPS Test 
+   <script type="text/javascript">
+    var clevertap = { event: [], profile: [], account: [], onUserLogin: [], notifications: [], privacy: [] };
+    clevertap.account.push({ "id": '884-5ZW-8Z7Z' }, 'sk1-staging-18', "wzrkt.com");
+    clevertap.privacy.push({ optOut: false });
+    clevertap.privacy.push({ useIP: false });
 
+    (function () {
+        var wzrk = document.createElement('script');
+        wzrk.type = 'text/javascript';
+        wzrk.async = true;
+        wzrk.src = 'https://static.clevertap.com/staging/task/ONC-551/multi_instance/js/clevertap.min.js';
 
-    (function() {
-      var wzrk = document.createElement("script");
-      wzrk.type = "text/javascript";
-      wzrk.async = true;
-      //    wzrk.src = "a.js";
-      //wzrk.src = "web_personalization_new_sdk";
-    // 	wzrk.src = 'https://d2r1yp2w7bby2u.cloudfront.net/js/clevertap.min.js';  
-     //   wzrk.src = 'https://static.clevertap.com/staging/WEB-3523-2/js/clevertap.js';
-     wzrk.src = 'https://static.clevertap.com/staging/task/ONC-551/multi_instance/js/clevertap.min.js'
-      //	    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@prompt_bugfix/clevertap.js';
-      // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@web-2622-message-pivot-id/clevertap.min.js';
-      //	     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/visual-editor-security/clevertap.min.js';
-      //	     wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@master/clevertap.js';
-      //	    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-3194/inbox_msg_order/clevertap.js';
-      //    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2678/frequency_caps/clevertap.js';
-      //    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2521/popup_imageonly/clevertap.js';
-      // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@task/SDK-2041/web_inbox/clevertap.js'
-      //	    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@WEB-3338/clevertap.js';
-//		    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@0bf9c64c766192eeaf7e960249979ec2a209c74b/clevertap.js';
-      //	    wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@b9ec8b1a15b14aa44540c5eeb1091909b5719814/clevertap.js';
-      // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@4bb53d1604a9051ed1f8109b222d76a74994237a/clevertap.js';
-    //  wzrk.src = 'https://static.clevertap.com/staging/WEB-3773/js/clevertap.js';
+        // Create additional instance after SDK loads
+        wzrk.onload = function () {
+            var ct2 = clevertap.createInstance({
+                accountId: '468-RZW-ZK6Z',
+            });
+            ct2.init();
+            ct2.privacy.push({ useIP: true });
+            ct2.setLogLevel(3);
+        };
 
-        wzrk.onload = () => {
-          console.log('loaded');
-          clevertap.notifications.push({
-            apnsWebPushId: "web.com.localhost.pushDemo", //only for safari browser
-            apnsWebPushServiceUrl:
-              "https://us-central1-chetan-s-demo-app.cloudfunctions.net/api", //only for safari browser
-            titleText: "Chetan Would you like to receive Push Notifications?",
-            bodyText:
-              "We promise to only send you relevant content and give you updates on your transactions",
-            okButtonText: "Sign me up!",
-            rejectButtonText: "No thanks",
-            okButtonColor: "#f28046",
-            hidePoweredByCT: true,
-            serviceWorkerPath: '/web-sdk-test/js/clevertap_sw.js',
-          });
-          // 	    console.log('clevertap.notifications', clevertap.notifications)
-          // 	    		clevertap.notifications.push({
-          //     "titleText": 'Wish to receive push notifications?',
-          //     "bodyText": 'Click Yes to receive push notifications',
-          //     "okButtonText": 'Yes',
-          //     "rejectButtonText": 'No',
-          // "serviceWorkerPath": '/web-sdk-test/js/clevertap_sw.js'});
-        }
-
-        // wzrk.src = 'https://cdn.jsdelivr.net/gh/CleverTap/clevertap-web-sdk@master/clevertap.js';
-        var s = document.getElementsByTagName("script")[0];
+        var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wzrk, s);
-      })();
+    })();
 
       (function () {
         const originalDispatch = EventTarget.prototype.dispatchEvent;
@@ -168,7 +128,6 @@
         EventTarget.prototype.dispatchEvent = function (event) {
           if (!(event instanceof Event)) return originalDispatch.call(this, event);
 
-          // Check if it's a CustomEvent
           if (event instanceof CustomEvent) {
             console.log("Custom Event Detected:", {
               type: event.type,
